@@ -72,4 +72,5 @@ endmodule
 
 
 **RESULTS**
+
 This Verilog code implements a 4-bit asynchronous (ripple) binary counter using T flip-flops.
