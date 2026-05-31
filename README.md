@@ -24,17 +24,51 @@ In timing diagram Q0 is changing as soon as the negative edge of clock pulse is 
 
 **Procedure**
 
-/* write all the steps invloved */
+/ write all the steps invloved 
 
 **PROGRAM**
+```
+module RIPPLECOUNTER(q, clk, reset); 
+output [3:0] q;
+input clk, reset;
+T_FF tffo(q[0], clk, reset); 
+T_FF tff1(q[1], q[0], reset); 
+T_FF tff2(q[2], q[1], reset); 
+T_FF tff3(q[3], q[2], reset); 
+endmodule
 
-/* Program for 4 Bit Ripple Counter and verify its truth table in quartus using Verilog programming.
+module D_FF(q, d, clk, reset); 
+output q;
+input d, clk, reset;
+reg q;
+always @(posedge reset or negedge clk)
+if (reset)
+q = 1'b0;
+else
+q = d;
+endmodule
 
- Developed by: RegisterNumber:
-*/
+module T_FF(q, clk, reset);
+output q;
+input clk, reset;
+wire d;
+D_FF dff0(q, d, clk, reset);
+not n1(d, q); 
+endmodule
 
+```
+```
+ Developed by:Sangeeth M
+ RegisterNumber:212225100043
+```
 **RTL LOGIC FOR 4 Bit Ripple Counter**
 
+<img width="1294" height="708" alt="Screenshot 2026-06-01 003026" src="https://github.com/user-attachments/assets/e9be0ae3-73aa-4488-a007-29f6149309b0" />
+
+
 **TIMING DIGRAMS FOR 4 Bit Ripple Counter**
+
+<img width="1920" height="458" alt="Screenshot 2026-06-01 003542" src="https://github.com/user-attachments/assets/7f4af82e-e777-4674-a4f2-30851ea0f010" />
+
 
 **RESULTS**
